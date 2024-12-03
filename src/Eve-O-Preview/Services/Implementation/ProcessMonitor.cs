@@ -8,6 +8,9 @@ namespace EveOPreview.Services.Implementation
 	{
 		#region Private constants
 		private const string DEFAULT_PROCESS_NAME = "ExeFile";
+		private const string GENSHIN_PROCESS_NAME = "YuanShen";
+        	private const string STARRAIL_PROCESS_NAME = "StarRail";
+		private const string ZZZ_PROCESS_NAME = "zenless-zone-zero";
 		private const string CURRENT_PROCESS_NAME = "EVE-O Preview";
 		#endregion
 
@@ -28,7 +31,28 @@ namespace EveOPreview.Services.Implementation
 		private bool IsMonitoredProcess(string processName)
 		{
 			// This is a possible extension point
-			return String.Equals(processName, ProcessMonitor.DEFAULT_PROCESS_NAME, StringComparison.OrdinalIgnoreCase);
+			// This is a possible extension point
+			if (String.Equals(processName, ProcessMonitor.DEFAULT_PROCESS_NAME, StringComparison.OrdinalIgnoreCase))
+			{
+		        	return true;
+		        } 
+			else if (String.Equals(processName,ProcessMonitor.GENSHIN_PROCESS_NAME, StringComparison.OrdinalIgnoreCase))
+			{
+		        	return true;
+		        }
+		        else if (String.Equals(processName, ProcessMonitor.STARRAIL_PROCESS_NAME, StringComparison.OrdinalIgnoreCase))
+		        {
+		                return true;
+		        }
+		        else if (String.Equals(processName, ProcessMonitor.ZZZ_PROCESS_NAME, StringComparison.OrdinalIgnoreCase))
+		        {
+		                return true;
+		        }
+		        //else if (String.Equals(processName, ProcessMonitor.PYFA_PROCESS_NAME, StringComparison.OrdinalIgnoreCase))
+		        //{
+		        //    return true;
+		        //}
+		        return false;
 		}
 
 		private IProcessInfo GetCurrentProcessInfo()
